@@ -58,7 +58,7 @@ def canjear_cupon(request, pk):
 
             proxies = {
                 'http': 'http://proxy.server:3128',
-                'https': 'http://proxy.server.3128'
+                'https': 'http://proxy.server:3128'
             }
             requests.post(url,data=payload, proxies=proxies, timeout=5)
         except Exception as e:
