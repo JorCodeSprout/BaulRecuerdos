@@ -55,7 +55,12 @@ def canjear_cupon(request, pk):
                 'text': mensaje,
                 'parse_mode': 'Markdown'
             }
-            requests.post(url,data=payload, timeout=5)
+
+            proxies = {
+                'http': 'http://proxy.server:3128',
+                'https': 'http://proxy.server.3128'
+            }
+            requests.post(url,data=payload, proxies=proxies, timeout=5)
         except Exception as e:
             print(f"Error al enviar notificación a Telegram: {e}")
     return redirect('detalle_cupon', pk=pk)
