@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ábrelo cuando... ✉️</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+    <h1>✉️ Ábrelo cuando...</h1>
+
+    <div class="lista-container">
+        {% for carta in cartas %}
+            <!-- target="_blank" hace que se abra en una pestaña nueva -->
+            <a href="{% url 'detalle_carta' carta.pk %}" target="_blank" class="item-card">
+                <h3>{{ carta.icono }} {{ carta.titulo }}</h3>
+            </a>
+        {% empty %}
+            <p>Aún no hay cartas guardadas.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

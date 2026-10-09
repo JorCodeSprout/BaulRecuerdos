@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Baúl de los Recuerdos</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <h1>El Baúl Digital de María 💖</h1>
+        <p>Elige un apartado para descubrir lo que guardo para ti</p>
+    </header>
+
+    <div class="menu-grid">
+        <a href="{% url 'cartas' %}" class="menu-card">
+            <div>
+                <span class="menu-icon">✉️</span>
+                <div class="menu-title">Ábrelo cuando...</div>
+                <div class="menu-desc">Cartas y mensajes cuardados para cada momento.</div>
+            </div>
+            <span class="btn-enter">Ver cartas</span>
+        </a>
+
+        <a href="{% url 'recuerdos' %}" class="menu-card">
+            <div>
+                <span class="menu-icon">📍</span>
+                <div class="menu-title">Nuestros Recuerdos</div>
+                <div class="menu-desc">Anécdotas e historias especiales que hemos vivido</div>
+            </div>
+            <span class="btn-enter">Ver historias</span>
+        </a>
+
+        <a href="{% url 'razones' %}" class="menu-card">
+            <div>
+                <span class="menu-icon">❤️</span>
+                <div class="menu-title">¿Por qué eres especial?</div>
+                <div class="menu-desc">Todas las razones por las que eres importante para mi</div>
+            </div>
+            <span class="btn-enter">Ver razones</span>
+        </a>
+
+        <a href="{% url 'cupones' %}" class="menu-card">
+            <div>
+                <span class="menu-icon">🎟️</span>
+                <div class="menu-title">Cupones de la Suerte</div>
+                <div class="menu-desc">Vales y sorpresas para canjear juntos</div>
+            </div>
+            <span class="btn-enter">Ver cupones</span>
+        </a>
+    </div>
+</body>
+</html>

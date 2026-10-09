@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Por qué eres especial?</title>
+    <link rel="stylesheet" href="{% static 'baul/css/razones.css' %}">
+</head>
+<body>
+    <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+    <h1>❤️ ¿Por qué eres especial?</h1>
+    {% for razon in razones %}
+        <div class="card">
+            <strong>#{{ razon.orden }}</strong>: {{ razon.texto }}
+        </div>
+    {% empty %}
+        <p>Aún no hay razones guardadas.</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+body { 
+    font-family: sans-serif; 
+    background: #fdf6ec; 
+    padding: 30px; 
+    text-align: center; 
+}
+.card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    margin: 15px auto; 
+    max-width: 500px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    text-align: left; 
+}
+.btn-volver { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    color: #e76f51; 
+    text-decoration: none; 
+    font-weight: bold; 
+}

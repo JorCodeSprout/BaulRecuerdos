@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VALE POR: {{ cupon.titulo }} 🎟️</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <div class="detalle-box" style="border: 3px dashed #f4a261;">
+        <button onclick="window.close();" class="btn-volver-atras">← Volver atrás</button>
+        
+        <h1>VALE POR: {{ cupon.titulo }}</h1>
+        
+        <div class="detalle-texto">
+            {{ cupon.descripcion }}
+        </div>
+
+        {% if cupon.canjeado %}
+            <p style="color: gray; font-weight: bold;">❌ Este cupón ya ha sido canjeado</p>
+        {% else %}
+            <p style="color: green; font-weight: bold;">✅ Disponible para canjear</p>
+        {% endif %}
+    </div>
+</body>
+</html>

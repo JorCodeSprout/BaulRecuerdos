@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recuerdo.titulo }} 📍</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <div class="detalle-box">
+        <button onclick="window.close();" class="btn-volver-atras">← Volver atrás</button>
+
+        <h1>{{ recuerdo.titulo }}</h1>
+        <p><small style="color: #888;">{{ recuerdo.fecha }}</small></p>
+        
+        {% if recuerdo.imagen %}
+            <img src="{{ recuerdo.imagen.url }}" style="max-width: 100%; border-radius: 12px; margin: 15px 0;">
+        {% endif %}
+
+        <div class="detalle-texto">
+            {{ recuerdo.descripcion }}
+        </div>
+    </div>
+</body>
+</html>

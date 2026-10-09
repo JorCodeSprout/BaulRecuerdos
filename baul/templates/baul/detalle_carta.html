@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ carta.titulo }}</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <div class="detalle-box">
+        <button onclick="window.close();" class="btn-volver-atras">← Volver atrás</button>
+
+        <h1>{{ carta.icono }} {{ carta.titulo }}</h1>
+        <div class="detalle-texto">
+            {{ carta.contenido }}
+        </div>
+    </div>
+</body>
+</html>

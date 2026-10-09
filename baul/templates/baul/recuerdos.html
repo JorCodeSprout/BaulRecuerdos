@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestros Recuerdos 📍</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+    <h1>📍 Nuestros Recuerdos</h1>
+
+    <div class="lista-container">
+        {% for recuerdo in recuerdos %}
+            <a href="{% url 'detalle_recuerdo' recuerdo.pk %}" target="_blank" class="item-card">
+                <h3>{{ recuerdo.titulo }}</h3>
+            </a>
+        {% empty %}
+            <p>Aún no hay recuerdos guardados.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* baul/static/baul/css/estilos.css */
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #fdf6ec 0%, #fbe3e8 100%);
+    --card-bg: #ffffff;
+    --primary-pink: #e76f51;
+    --text-dark: #2b2d42;
+    --shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--primary-pink);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.menu-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(231, 111, 81, 0.15);
+}
+
+.menu-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.menu-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 8px;
+}
+
+.menu-desc {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.btn-enter {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: var(--primary-pink);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Tarjetas de Lista */
+.lista-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.item-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    border-color: #e76f51;
+    box-shadow: 0 8px 20px rgba(231, 111, 81, 0.15);
+}
+
+.item-card h3 {
+    margin: 0;
+    color: #2b2d42;
+    font-size: 1.2rem;
+}
+
+/* Vista de Detalle Individual */
+.detalle-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.detalle-box h1 {
+    color: #e76f51;
+    margin-top: 0;
+}
+
+.detalle-texto {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin: 20px 0;
+    white-space: pre-line;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #e76f51;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-volver-atras {
+    background-color: #f8f9fa;
+    color: #e76f51;
+    border: 2px solid #e76f51;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.btn-volver-atras:hover {
+    background-color: #e76f51;
+    color: #ffffff;
+}

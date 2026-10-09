@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cupones de la Suerte 🎟️</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+    <h1>🎟️ Cupones de la Suerte</h1>
+
+    <div class="lista-container">
+        {% for cupon in cupones %}
+            <a href="{% url 'detalle_cupon' cupon.pk %}" target="_blank" class="item-card">
+                <h3>VALE POR: {{ cupon.titulo }}</h3>
+            </a>
+        {% empty %}
+            <p>Aún no hay cupones guardados.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
