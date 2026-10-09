@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tk34-n_v8*9*f4wjunkrxv%48#_+&#67)a-h9tg6-4gbw&%)4i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['JorCodeSprout.pythonanywhere.com']
+ALLOWED_HOSTS = ['JorCodeSprout.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -137,3 +137,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+TELEGRAM_BOT_TOKEN = '8231747173:AAE57ALgXXUkVO8W03bmC0Y3rcUB_FgvZM8'
+TELEGRAM_CHAT_ID = '5754075122'

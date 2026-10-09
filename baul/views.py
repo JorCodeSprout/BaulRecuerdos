@@ -1,6 +1,8 @@
+import requests
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Carta, Razon, Cupon, Recuerdo
+from django.conf import settings
 
 def inicio(request):
     return render(request, 'baul/index.html')
@@ -41,4 +43,19 @@ def canjear_cupon(request, pk):
     if request.method == "POST":
         cupon.canjeado = True
         cupon.save()
+
+        try:
+            token = settings.TELEGRAM_BOT_TOKEN
+            chat_id = settings.TELEGRAM_CHAT_ID
+            mensaje = f"*¡Nuevo cupón canjeado!*\n\n*Usuario:* {request.user.username}\n🎁 *Cupón:* {cupon.titulo}"
+
+            url = f"https://api.telegram.org/bot{token}/sendMessage"
+            payload = {
+                'chat_id': chat_id,
+                'text': mensaje,
+                'parse_mode': 'Markdown'
+            }
+            requests.post(url,data=payload, timeout=5)
+        except Exception as e:
+            print(f"Error al enviar notificación a Telegram: {e}")
     return redirect('detalle_cupon', pk=pk)
