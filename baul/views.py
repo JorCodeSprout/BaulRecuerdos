@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Carta, Razon, Cupon, Recuerdo
 
 def inicio(request):
@@ -33,3 +34,11 @@ def detalle_recuerdo(request, pk):
 def detalle_cupon(request, pk):
     cupon = get_object_or_404(Cupon, pk=pk)
     return render(request, 'baul/detalle_cupon.html', {'cupon': cupon})
+
+@login_required
+def canjear_cupon(request, pk):
+    cupon = get_object_or_404(Cupon, pk=pk)
+    if request.method == "POST":
+        cupon.canjeado = True
+        cupon.save()
+    return redirect('detalle_cupon', pk=pk)

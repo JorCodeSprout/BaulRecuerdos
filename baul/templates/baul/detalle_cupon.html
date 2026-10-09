@@ -19,7 +19,12 @@
         {% if cupon.canjeado %}
             <p style="color: gray; font-weight: bold;">❌ Este cupón ya ha sido canjeado</p>
         {% else %}
-            <p style="color: green; font-weight: bold;">✅ Disponible para canjear</p>
+            <form action="{% url 'canjear_cupon' cupon.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn-canjear">
+                    Canjear Cupón
+                </button>
+            </form>
         {% endif %}
     </div>
 </body>

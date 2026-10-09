@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar al Baúl 🔐</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <h2>El Baúl de Recuerdos 🗝️</h2>
+        <p class="login-sub">Inicia sesión para canjear tus cupones</p>
+
+        {% if form.errors %}
+            <p class="error-msg">Usuario o contraseña incorrectos. Inténtalo de nuevo.</p>
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="id_username">Usuario</label>
+                <input type="text" name="username" id="id_username" required placeholder="Tu usuario">
+            </div>
+
+            <div class="input-group">
+                <label for="id_password">Contraseña</label>
+                <input type="password" name="password" id="id_password" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="btn-ingresar">Ingresar al Baúl</button>
+        </form>
+    </div>
+</body>
+</html>
