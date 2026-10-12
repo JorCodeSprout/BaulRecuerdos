@@ -79,6 +79,13 @@ def notas_365(request):
     else:
         dia_actual = diferencia + 1
 
+    for nota in notas:
+        fecha_nota = inicio_cuenta + datetime.timedelta(days=nota.dia - 1)
+        nota.fecha_formateada = fecha_nota.strftime("%d/%m")
+
+        if nota.dia > dia_actual:
+            nota.texto = ""
+
     context = {
         'notas': notas,
         'dia_actual': dia_actual

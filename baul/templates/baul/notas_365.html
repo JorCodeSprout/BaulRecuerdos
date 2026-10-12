@@ -17,26 +17,47 @@
     <main class="contenedor-calendario">
         <div class="grid-calendario">
             {% for nota in notas %}
-                <button 
-                    class="dia-card {% if nota.dia <= dia_actual %}desbloqueado{% else %}bloqueado{% endif %}"
-                    {% if nota.dia <= dia_actual %}
-                        onclick="abrirNota('{{ nota.dia }}', '{{ nota.texto|escapejs }}')"
-                    {% else %}
-                        onclick="mostrarBloqueado('{{ nota.dia }}')"
-                    {% endif %}
-                >
-                    <span class="num-dia">Día {{ nota.dia }}</span>
-                    <span class="icono">
-                        {% if nota.dia <= dia_actual %}💌{% else %}🔒{% endif %}
-                    </span>
-                </button>
+                {% if nota.dia <= dia_actual %}
+                    <button
+                        class="dia-card desbloqueado"
+                        onclick="abrirNota('{{ nota.fecha_formateada }}', '{{ nota.texto|escapejs }}')">
+                        <span class="num-dia">{{ nota.fecha_formateada }}</span>
+                        <span class="icono">💌</span>
+                    </button>
+                {% else %}
+                    <button 
+                        class="dia-card bloqueado"
+                        onclick="mostrarBloqueado('{{ nota.fecha_formateada }}')">
+                        <span class="num-dia">
+                            {{ nota.fecha_formateada }}
+                            <num class="icono">🔒</num>
+                        </span>
+                    </button>
+                {% endif %}
             {% endfor %}
         </div>
     </main>
 
     <!-- Ventana Emergente (Modal) -->
-    <div id="modalNota" class="modal" onclick="cerrarModal(event)">
-        <div class="modal-contenido">
+    <div id="modalNota"
+    class="modal"
+    style="display:none; 
+        position:fixed; 
+        inset:0; width:100%; height:100%;
+        background:rgba(0,0,0,0.7); justify-content:center;
+        align-items:center; 
+        z-index:99999;"
+    onclick="cerrarModal(event)">
+        <div class="modal-contenido" style="background:#fff; 
+            color:#333; padding:30px;
+            border-radius:20px; 
+            width:85%; 
+            max-width:450px;
+            box-sizing:border-box; 
+            text-align:center;
+            position:relative; 
+            margin:auto;
+            box-shadow:0 10px 25px rgba(0,0,0,.15);">
             <span class="cerrar" onclick="cerrarModalDirecto()">&times;</span>
             <h2 id="modalTitulo">Día X</h2>
             <div class="modal-body">
