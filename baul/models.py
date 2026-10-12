@@ -57,3 +57,14 @@ class Recuerdo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class NotaDiaria(models.Model):
+    dia = models.IntegerField(unique=True)
+    texto = models.TextField()
+    desbloqueada = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['dia']
+
+    def __str__(self):
+        return f"Día {self.dia}"

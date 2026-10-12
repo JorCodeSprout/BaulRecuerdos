@@ -1,7 +1,8 @@
 import requests
+import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Carta, Razon, Cupon, Recuerdo
+from .models import Carta, Razon, Cupon, Recuerdo, NotaDiaria
 from django.conf import settings
 
 def inicio(request):
@@ -64,3 +65,16 @@ def canjear_cupon(request, pk):
         except Exception as e:
             print(f"Error al enviar notificación a Telegram: {e}")
     return redirect('detalle_cupon', pk=pk)
+
+@login_required
+def notas_365(request):
+    notas = NotaDiaria.objects.all()
+
+    dia_actual = datetime.date.today().timetuple().tm_yday
+
+    context = {
+        'notas': notas,
+        'dia_actual': dia_actual
+    }
+
+    return render(request, 'notas_365.html', context)

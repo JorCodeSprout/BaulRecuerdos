@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>365 días</title>
+    <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
+</head>
+<body>
+    <div class="contenedor-365">
+    <h2>✨ 365 Días Contigo ✨</h2>
+    <p>Una nota para cada día del año.</p>
+
+    <div class="grid-notas">
+        {% for nota in notas %}
+            <div class="tarjeta-nota {% if nota.dia <= dia_actual %}desbloqueada{% else %}bloqueada{% endif %}">
+                <span class="numero-dia">Día {{ nota.dia }}</span>
+                
+                {% if nota.dia <= dia_actual %}
+                    <div class="contenido-nota">
+                        <p>{{ nota.texto }}</p>
+                    </div>
+                {% else %}
+                    <div class="candado">🔒 (Vuelve el día {{ nota.dia }})</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
