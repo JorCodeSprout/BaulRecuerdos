@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Carta, Razon, Cupon, Recuerdo
+from .models import Carta, NotaDiaria, Razon, Cupon, Recuerdo
 
 # Register your models here.
 @admin.register(Carta)
@@ -17,3 +17,7 @@ class CuponAdmin(admin.ModelAdmin):
 @admin.register(Recuerdo)
 class RecuerdoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'fecha')
+
+@admin.register(NotaDiaria)
+class NotaDiariaAdmin(admin.ModelAdmin):
+    list_display = ('dia', 'texto', 'desbloqueada')

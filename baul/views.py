@@ -70,11 +70,18 @@ def canjear_cupon(request, pk):
 def notas_365(request):
     notas = NotaDiaria.objects.all()
 
-    dia_actual = datetime.date.today().timetuple().tm_yday
+    hoy = datetime.date.today()
+    inicio_cuenta = datetime.date(hoy.year, 11, 1)
+    diferencia = (hoy - inicio_cuenta).days
+
+    if diferencia < 0:
+        dia_actual = 0
+    else:
+        dia_actual = diferencia + 1
 
     context = {
         'notas': notas,
         'dia_actual': dia_actual
     }
 
-    return render(request, 'notas_365.html', context)
+    return render(request, 'baul/notas_365.html', context)

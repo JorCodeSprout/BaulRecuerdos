@@ -16,6 +16,8 @@ urlpatterns = [
     path('cupones/<int:pk>/', views.detalle_cupon, name='detalle_cupon'),
     path('cupones/<int:pk>/canjear/', views.canjear_cupon, name='canjear_cupon'),
 
+    path('notas-365/', views.notas_365, name='notas_365'),
+
     path('login/', auth_views.LoginView.as_view(template_name='baul/login.html'), name='login'),
     path('logout', auth_views.LogoutView.as_view(next_page='/'), name='logout')
 ]

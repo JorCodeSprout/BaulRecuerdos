@@ -1,31 +1,74 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>365 días</title>
+    <title>365 Días Contigo</title>
     <link rel="stylesheet" href="{% static 'baul/css/estilos.css' %}">
 </head>
 <body>
-    <div class="contenedor-365">
-    <h2>✨ 365 Días Contigo ✨</h2>
-    <p>Una nota para cada día del año.</p>
+    <header class="header-365">
+        <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+        <h1>✨ 365 Días Contigo ✨</h1>
+        <p>Haz clic en el día de hoy para descubrir tu nota</p>
+    </header>
 
-    <div class="grid-notas">
-        {% for nota in notas %}
-            <div class="tarjeta-nota {% if nota.dia <= dia_actual %}desbloqueada{% else %}bloqueada{% endif %}">
-                <span class="numero-dia">Día {{ nota.dia }}</span>
-                
-                {% if nota.dia <= dia_actual %}
-                    <div class="contenido-nota">
-                        <p>{{ nota.texto }}</p>
-                    </div>
-                {% else %}
-                    <div class="candado">🔒 (Vuelve el día {{ nota.dia }})</div>
-                {% endif %}
+    <main class="contenedor-calendario">
+        <div class="grid-calendario">
+            {% for nota in notas %}
+                <button 
+                    class="dia-card {% if nota.dia <= dia_actual %}desbloqueado{% else %}bloqueado{% endif %}"
+                    {% if nota.dia <= dia_actual %}
+                        onclick="abrirNota('{{ nota.dia }}', '{{ nota.texto|escapejs }}')"
+                    {% else %}
+                        onclick="mostrarBloqueado('{{ nota.dia }}')"
+                    {% endif %}
+                >
+                    <span class="num-dia">Día {{ nota.dia }}</span>
+                    <span class="icono">
+                        {% if nota.dia <= dia_actual %}💌{% else %}🔒{% endif %}
+                    </span>
+                </button>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Ventana Emergente (Modal) -->
+    <div id="modalNota" class="modal" onclick="cerrarModal(event)">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModalDirecto()">&times;</span>
+            <h2 id="modalTitulo">Día X</h2>
+            <div class="modal-body">
+                <p id="modalTexto"></p>
             </div>
-        {% endfor %}
+            <button class="btn-cerrar-modal" onclick="cerrarModalDirecto()">Guardar recuerdo 💖</button>
+        </div>
     </div>
-</div>
+
+    <!-- JavaScript para manejar los clics y el modal -->
+    <script>
+        function abrirNota(dia, texto) {
+            document.getElementById('modalTitulo').innerText = '✨ Día ' + dia + ' ✨';
+            document.getElementById('modalTexto').innerText = texto;
+            document.getElementById('modalNota').style.display = 'flex';
+        }
+
+        function mostrarBloqueado(dia) {
+            document.getElementById('modalTitulo').innerText = '🔒 Día ' + dia;
+            document.getElementById('modalTexto').innerText = '¡Aún no puedes abrir esta nota! Vuelve cuando sea su día. 😉';
+            document.getElementById('modalNota').style.display = 'flex';
+        }
+
+        function cerrarModalDirecto() {
+            document.getElementById('modalNota').style.display = 'none';
+        }
+
+        function cerrarModal(event) {
+            if (event.target.id === 'modalNota') {
+                cerrarModalDirecto();
+            }
+        }
+    </script>
 </body>
 </html>

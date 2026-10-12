@@ -206,7 +206,6 @@ header p {
     display: inline-block;
 }
 
-/* Estilos para la pantalla de Login */
 .login-body {
     display: flex;
     justify-content: center;
@@ -322,4 +321,121 @@ header p {
 .tarjeta-nota.bloqueada {
     opacity: 0.6;
     background: #eaeaea;
+}
+
+.contenedor-calendario {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.grid-calendario {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;  
+}
+
+.dia-card {
+    width: 100%;
+    background: #ffffff;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dia-card.desbloqueado {
+    border-color: #ffb7c5;
+    background-color: #fff9fa;
+}
+
+.dia-card.desbloqueado:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(255, 183, 197, 0.4);
+    background-color: #ffffff;
+}
+
+.dia-card.bloqueado {
+    background-color: #f7f7f7;
+    opacity: 0.6;
+}
+
+.num-dia {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.icono {
+    font-size: 1.2rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 85%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-body {
+    margin: 20px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.btn-cerrar-modal {
+    background: #ffb7c5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cerrar-modal:hover {
+    background: #ff9eaa;
 }
