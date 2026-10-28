@@ -71,7 +71,7 @@ def notas_365(request):
     notas = NotaDiaria.objects.all()
 
     hoy = datetime.date.today()
-    inicio_cuenta = datetime.date(hoy.year, 11, 1)
+    inicio_cuenta = datetime.date(hoy.year, 11, 2)
     diferencia = (hoy - inicio_cuenta).days
 
     if diferencia < 0:
